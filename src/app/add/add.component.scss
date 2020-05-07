@@ -75,3 +75,16 @@
     display: block !important;
   }
 }
+
+
+.wrapper {
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  .flex-button {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

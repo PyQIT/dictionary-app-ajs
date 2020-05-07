@@ -1,0 +1,30 @@
+<header>
+  <mdb-navbar SideClass="navbar fixed-top navbar-expand-md navbar-dark  blue accent-4 scrolling-navbar  ie-nav" [containerInside]="false">
+    <logo>
+      <a class="logo navbar-brand" routerLink="/">
+        <img src="../assets/icons.svg" alt="Ezfinder">
+      </a>
+    </logo>
+    <links>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item waves-light" routerLinkActive=" active" mdbWavesEffect>
+          <a class="nav-link white-text" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item waves-light" routerLinkActive=" active" mdbWavesEffect>
+          <a class="nav-link white-text" routerLink="/add">Dodaj tłumaczenie</a>
+        </li>
+      </ul>
+    </links>
+  </mdb-navbar>
+</header>
+<!--Main Navigation-->
+<div class="container mt-5 mb-5">
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="page-footer text-center font-small mt-4 blue accent-4 ">
+
+
+  <div class="footer-copyright py-3">Copyright Przemysław Pyk and Piotr Grzyb
+  </div>
+</footer>

@@ -52,4 +52,5 @@ import { CommonModule } from '@angular/common';
   providers: [ApiService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {}

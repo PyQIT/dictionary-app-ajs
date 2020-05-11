@@ -3,6 +3,8 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
 // mdb import
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -31,6 +33,7 @@ import { CommonModule } from '@angular/common';
     AddBoxComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,

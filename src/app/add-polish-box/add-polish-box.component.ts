@@ -10,11 +10,11 @@ import {
 } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 @Component({
-  selector: 'app-search-box',
-  templateUrl: './search-box.component.html',
-  styleUrls: ['./search-box.component.scss']
+  selector: 'app-add-polish-box',
+  templateUrl: './add-polish-box.component.html',
+  styleUrls: ['./add-polish-box.component.scss']
 })
-export class SearchBoxComponent implements OnInit {
+export class AddPolishBoxComponent implements OnInit {
   searchField: FormControl = new FormControl();
   wordList: any;
   displayList = false;

@@ -3,6 +3,8 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule} from 'angularfire2/database';
 // mdb import
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -16,7 +18,8 @@ import { AddComponent } from './add/add.component';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressHttpModule } from '@ngx-progressbar/http';
 import { SearchBoxComponent } from './search-box/search-box.component';
-import { AddBoxComponent } from './add-box/add-box.component';
+import { AddPolishBoxComponent } from './add-polish-box/add-polish-box.component';
+import { AddEnglishBoxComponent} from './add-english-box/add-english-box.component';
 // Toster import
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -28,9 +31,12 @@ import { CommonModule } from '@angular/common';
     FullViewComponent,
     AddComponent,
     SearchBoxComponent,
-    AddBoxComponent
+    AddPolishBoxComponent,
+    AddEnglishBoxComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -49,4 +55,6 @@ import { CommonModule } from '@angular/common';
   providers: [ApiService],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule {}

@@ -10,11 +10,11 @@ import {
 } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 @Component({
-  selector: 'app-add-box',
-  templateUrl: './add-box.component.html',
-  styleUrls: ['./add-box.component.scss']
+  selector: 'app-add-english-box',
+  templateUrl: './add-english-box.component.html',
+  styleUrls: ['./add-english-box.component.scss']
 })
-export class AddBoxComponent implements OnInit {
+export class AddEnglishBoxComponent implements OnInit {
   searchField: FormControl = new FormControl();
   wordList: any;
   displayList = false;
@@ -49,7 +49,7 @@ export class AddBoxComponent implements OnInit {
           } else if (error.status === 500) {
             this.toastr.warning(`Something is broken 💔`, `Contact Developer`);
           } else if (error.status === 502) {
-            this.toastr.info(`Oxford Dictionaries API is down or being upgraded 👻`, `Bad Gateway`);
+            this.toastr.info(`Firebase API is down or being upgraded 👻`, `Bad Gateway`);
           } else if (error.status === 503) {
             this.toastr.info(`Please try again later 😕`, `Service Unavailable`);
           } else if (error.status === 504) {
@@ -63,11 +63,7 @@ export class AddBoxComponent implements OnInit {
     this.displayList = false;
   }
   onFocus(value) {
-    if (value.length > 0) {
-      this.displayList = true;
-    } else {
-      this.displayList = false;
-    }
+    this.displayList = value.length > 0;
   }
   onListClick(e) {
     this.href = this.router.url.split('/');

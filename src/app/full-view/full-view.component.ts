@@ -150,7 +150,7 @@ export class FullViewComponent implements OnInit {
     } else if (error.status === 500) {
       this.toastr.warning(`Something is broken 💔`, `Contact Developer`);
     } else if (error.status === 502) {
-      this.toastr.info(`Oxford Dictionaries API is down or being upgraded 👻`, `Bad Gateway`);
+      this.toastr.info(`Firebase API is down or being upgraded 👻`, `Bad Gateway`);
     } else if (error.status === 503) {
       this.toastr.info(`Please try again later 😕`, `Service Unavailable`);
     } else if (error.status === 504) {

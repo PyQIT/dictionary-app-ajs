@@ -17,11 +17,6 @@ export class AddComponent implements OnInit {
   ngOnInit() {
   }
 
-  newWord(): void {
-    this.submitted = false;
-    this.word = new Word();
-  }
-
   save() {
     this.wordService.createWord(this.word);
     this.word = new Word();

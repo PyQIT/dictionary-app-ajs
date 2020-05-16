@@ -10,7 +10,7 @@
         <h3 class="heading d-md-none">Wpisz słowo po polsku</h3>
         <div class="form-inline m-auto flex-center input-group">
           <ng-progress [thick]="true" [color]="'#ffd747'" [ease]="'easeInSine'"></ng-progress>
-          <input class="form-control" id="inputPolishWord" required [(ngModel)]="word.pl" placeholder="Wprowadź słowo...">
+          <input type="text" class="form-control" id="pl" required [(ngModel)]="word.pl" name="pl" placeholder="Wprowadź słowo...">
         </div>
       </div>
         <br>
@@ -19,7 +19,7 @@
         <h3 class="heading d-md-none">Wpisz słowo po angielsku</h3>
         <div class="form-inline m-auto flex-center input-group">
           <ng-progress [thick]="true" [color]="'#ffd747'" [ease]="'easeInSine'"></ng-progress>
-          <input class="form-control" id="inputEnglishWord" required [(ngModel)]="word.en" placeholder="Wprowadź słowo...">
+          <input type="text" class="form-control" id="en" required [(ngModel)]="word.en" name="en" placeholder="Wprowadź słowo...">
         </div>
       </div>
       </form>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase} from 'angularfire2/database';
+import { Word } from './word';
 
 @Component({
   selector: 'app-root',
@@ -23,9 +24,4 @@ export class AppComponent implements OnInit {
       });
     });
   }
-}
-
-interface Word {
-  en: string;
-  pl: string;
 }

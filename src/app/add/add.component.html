@@ -1,20 +1,28 @@
 <div class="container-fluid view ">
   <div class="mask">
     <div class="wrapper">
+      <form (ngSubmit)="onSubmit()">
       <div class="flex-button">
-        <button type="button" class="btn btn-primary">Dodaj</button>
+        <button type="submit" class="btn btn-primary">Dodaj</button>
       </div>
       <div class="container">
         <h2 class="heading display-5 d-none d-md-block">Wpisz słowo po polsku</h2>
         <h3 class="heading d-md-none">Wpisz słowo po polsku</h3>
-        <app-add-polish-box></app-add-polish-box>
+        <div class="form-inline m-auto flex-center input-group">
+          <ng-progress [thick]="true" [color]="'#ffd747'" [ease]="'easeInSine'"></ng-progress>
+          <input type="text" class="form-control" id="pl" required [(ngModel)]="word.pl" name="pl" placeholder="Wprowadź słowo...">
+        </div>
       </div>
         <br>
       <div class="container">
         <h2 class="heading display-5 d-none d-md-block">Wpisz słowo po angielsku</h2>
         <h3 class="heading d-md-none">Wpisz słowo po angielsku</h3>
-        <app-add-english-box></app-add-english-box>
+        <div class="form-inline m-auto flex-center input-group">
+          <ng-progress [thick]="true" [color]="'#ffd747'" [ease]="'easeInSine'"></ng-progress>
+          <input type="text" class="form-control" id="en" required [(ngModel)]="word.en" name="en" placeholder="Wprowadź słowo...">
+        </div>
       </div>
+      </form>
     </div>
   </div>
 </div>

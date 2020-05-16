@@ -3,9 +3,8 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule} from '@angular/fire/firestore';
+import { AngularFireDatabaseModule} from 'angularfire2/database';
 // mdb import
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -37,9 +36,7 @@ import { CommonModule } from '@angular/common';
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
-
-    AngularFirestoreModule,
-    AngularFireAuthModule,
+    AngularFireDatabaseModule,
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,

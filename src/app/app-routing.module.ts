@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { FullViewComponent } from './full-view/full-view.component';
 import { SearchComponent } from './search/search.component';
 import { AddComponent } from './add/add.component';
-import {AuthGuard} from './auth-guard';
 
 const routes: Routes = [
   { path: 'search', component: SearchComponent},

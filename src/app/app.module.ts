@@ -18,8 +18,6 @@ import { AddComponent } from './add/add.component';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressHttpModule } from '@ngx-progressbar/http';
 import { SearchBoxComponent } from './search-box/search-box.component';
-import { AddPolishBoxComponent } from './add-polish-box/add-polish-box.component';
-import { AddEnglishBoxComponent} from './add-english-box/add-english-box.component';
 // Toster import
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -31,8 +29,6 @@ import { CommonModule } from '@angular/common';
     FullViewComponent,
     AddComponent,
     SearchBoxComponent,
-    AddPolishBoxComponent,
-    AddEnglishBoxComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

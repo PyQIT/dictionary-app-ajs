@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
 }
 
 interface Word {
+  $key: string;
   en: string;
   pl: string;
 }

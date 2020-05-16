@@ -43,17 +43,17 @@ export class SearchBoxComponent implements OnInit {
         error => {
           console.log(error);
           if (error.status === 404 || error.status === 414) {
-            this.toastr.error(`Try Again with valid word😭`, `${error.statusText}`);
+            this.toastr.error(`Try Again with valid word`, `${error.statusText}`);
           } else if (error.status === 403) {
-            this.toastr.error(`Details in About Page🙇`, `Contact Developer`);
+            this.toastr.error(`Details in About Page`, `Contact Developer`);
           } else if (error.status === 500) {
-            this.toastr.warning(`Something is broken 💔`, `Contact Developer`);
+            this.toastr.warning(`Something is broken`, `Contact Developer`);
           } else if (error.status === 502) {
-            this.toastr.info(`Firebase API is down or being upgraded 👻`, `Bad Gateway`);
+            this.toastr.info(`Firebase API is down or being upgraded `, `Bad Gateway`);
           } else if (error.status === 503) {
-            this.toastr.info(`Please try again later 😕`, `Service Unavailable`);
+            this.toastr.info(`Please try again later `, `Service Unavailable`);
           } else if (error.status === 504) {
-            this.toastr.info(`Please try again later 😥`, `Gateway timeout`);
+            this.toastr.info(`Please try again later `, `Gateway timeout`);
           }
         }
       );

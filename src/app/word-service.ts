@@ -15,7 +15,7 @@ export class WordService {
     this.wordsRef = db.list(this.dbPath);
   }
 
-  createWord(word: Word): void {
-    this.wordsRef.push(word);
+  createWord(word: Word) {
+    return this.wordsRef.push(word);
   }
 }

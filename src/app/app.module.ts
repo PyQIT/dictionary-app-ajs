@@ -17,7 +17,6 @@ import { AddComponent } from './add/add.component';
 // Progressbar import
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressHttpModule } from '@ngx-progressbar/http';
-import { SearchBoxComponent } from './search-box/search-box.component';
 // Toster import
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -28,7 +27,6 @@ import { CommonModule } from '@angular/common';
     SearchComponent,
     FullViewComponent,
     AddComponent,
-    SearchBoxComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

@@ -4,7 +4,17 @@
       <h1 class="heading display-4 d-none d-md-block">Nie pamiętasz słowa? Znajdź je!</h1>
       <h3 class="heading d-md-none">Nie pamiętasz słowa? Znajdź je!</h3>
       <br>
-      <app-search-box></app-search-box>
+      <div class="form-inline m-auto flex-center input-group">
+        <ng-progress [thick]="true" [color]="'#ffd747'" [ease]="'easeInSine'"></ng-progress>
+        <input #searchBox [formControl]="searchField" type="search" class="form-control" placeholder="Wpisz szukane słowo..."
+               (focus)="onFocus(searchBox.value)" required>
+        <div class="input-group-append">
+          <button (click)="btnClick(searchBox.value)" class="btn btn-md btn-rounded btn-mdb-color waves-effect m-0 waves-light" type="button"
+                  mdbWavesEffect>
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

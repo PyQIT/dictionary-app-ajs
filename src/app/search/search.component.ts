@@ -19,7 +19,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
-  searchWords(userWord) {
+  searchWords(userWord, languageType) {
     const x = this.db.list('words');
     x.snapshotChanges().subscribe(item => {
       // tslint:disable-next-line:no-shadowed-variable

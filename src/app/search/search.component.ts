@@ -3,6 +3,7 @@ import { ApiService } from '../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Word} from '../word';
 import {AngularFireDatabase} from 'angularfire2/database';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-search',
@@ -16,7 +17,8 @@ export class SearchComponent implements OnInit {
 
   constructor( private route: ActivatedRoute,
                private router: Router, private http: ApiService,
-               private db: AngularFireDatabase) {}
+               private db: AngularFireDatabase,
+               private toastr: ToastrService) {}
   ngOnInit() {
   }
 
@@ -30,16 +32,29 @@ export class SearchComponent implements OnInit {
   }
 
   searchWords(userWord) {
-    const x = this.db.list('words');
-    x.snapshotChanges().subscribe(item => {
-      // tslint:disable-next-line:no-shadowed-variable
-      item.forEach(element => {
-        const y = element.payload.toJSON();
-        y['$key'] = element.key;
-        this.words.push(y as Word);
-        y[this.languageType].startsWith(userWord);
-        console.log(y);
+    let tmp = 0;
+    if (userWord === '' || userWord === undefined ) {
+      this.toastr.error(`Pole wyszukiwania nie może być puste.`, `Błąd wyszukiwania!`);
+    } else {
+      const x = this.db.list('words');
+      x.snapshotChanges().subscribe(item => {
+        // tslint:disable-next-line:no-shadowed-variable
+        item.forEach(element => {
+          const y = element.payload.toJSON();
+          y['$key'] = element.key;
+          this.words.push(y as Word);
+          if (y[this.languageType].startsWith(userWord)) {
+            console.log(y[this.languageType] + '-' + y['en']);
+            if (tmp === 0) {
+              this.toastr.success(`Znaleziono szukane słowo.`, `Sukces!`);
+              tmp++;
+            }
+          }
+        });
+        if (tmp === 0) {
+          this.toastr.error(`Brak podanego słowa w systemie.`, `Nie znaleziono słowa!`);
+        }
       });
-    });
+    }
   }
 }

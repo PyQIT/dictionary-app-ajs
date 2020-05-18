@@ -36,7 +36,7 @@ export class AddComponent implements OnInit {
 
   handleAnswer(answer) {
     if (answer === 400) {
-      this.toastr.error(`Coś poszło nie tak. Spróbuj ponownie.`, `Brakuje słowa`);
+      this.toastr.error(`Coś poszło nie tak. Spróbuj ponownie.`, `Brakuje słowa!`);
     } else {
       this.toastr.success('Dodano nowe tłumaczenie.', 'Sukces!');
       console.log(answer);

@@ -12,6 +12,7 @@ import {AngularFireDatabase} from 'angularfire2/database';
 export class SearchComponent implements OnInit {
 
   words: Word[] = [];
+  languageType = 'en';
 
   constructor( private route: ActivatedRoute,
                private router: Router, private http: ApiService,
@@ -19,7 +20,16 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
-  searchWords(userWord, languageType) {
+  changeLanguage() {
+    if (this.languageType === 'pl') {
+      this.languageType = 'en';
+    } else {
+      this.languageType = 'pl';
+    }
+    console.log(this.languageType);
+  }
+
+  searchWords(userWord) {
     const x = this.db.list('words');
     x.snapshotChanges().subscribe(item => {
       // tslint:disable-next-line:no-shadowed-variable
@@ -27,6 +37,7 @@ export class SearchComponent implements OnInit {
         const y = element.payload.toJSON();
         y['$key'] = element.key;
         this.words.push(y as Word);
+        y[this.languageType].startsWith(userWord);
         console.log(y);
       });
     });

@@ -6,28 +6,29 @@
       <br>
       <div class="form-inline m-auto flex-center input-group">
         <ng-progress [thick]="true" [color]="'#ffd747'" [ease]="'easeInSine'"></ng-progress>
-        <input #searchBox [formControl]="searchField" type="search" class="form-control" placeholder="Wpisz szukane słowo..."
-               (focus)="onFocus(searchBox.value)" required>
+        <input #searchBox [formControl]="" type="search" class="form-control" placeholder="Wpisz szukane słowo...">
         <div class="input-group-append">
           <button (click)="searchWords(searchBox.value)" class="btn btn-md btn-rounded btn-mdb-color waves-effect m-0 waves-light" type="button"
                   mdbWavesEffect>
             <i class="fa fa-search" aria-hidden="true"></i>
           </button>
         </div>
+      </div>
+      <div [hidden]="!submitted">
+      <mat-card [@listAnimation]="items.length" class="list-inline list-rounded">
         <mat-list dense>
           <mat-list-item> Pepper </mat-list-item>
           <mat-list-item> Salt </mat-list-item>
           <mat-list-item> Paprika </mat-list-item>
         </mat-list>
+      </mat-card>
       </div>
       <div class="mid">
-
         <label class="rocker rocker-small">
           <input type="checkbox" id="ToggleswitchId"  (change)="changeLanguage()" >
           <span class="switch-left">PL</span>
           <span class="switch-right">EN</span>
         </label>
-
       </div>
     </div>
   </div>

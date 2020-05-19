@@ -157,6 +157,9 @@ input:checked:focus + .switch-left + .switch-right {
 .btn-rounded {
   border-radius: 10em;
 }
+.list-rounded {
+  border-radius: 1em;
+}
 .form-control {
   border-radius: 1rem;
   border: 1px solid #007bff;
@@ -215,6 +218,12 @@ input:checked:focus + .switch-left + .switch-right {
   display: none !important;
 }
 
+.list-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
 @media (min-width: 576px) {
   .d-sm-none {
     display: none !important;
@@ -229,6 +238,10 @@ input:checked:focus + .switch-left + .switch-right {
   }
   .form-inline {
     width: 50%;
+  }
+  .list-inline {
+    width: 43%;
+    left: 26%;
   }
 }
 @media (min-width: 992px) {

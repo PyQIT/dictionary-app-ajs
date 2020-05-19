@@ -21,12 +21,16 @@ import { NgProgressHttpModule } from '@ngx-progressbar/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+// @ts-ignore
+import {MatListModule} from '@angular/material/list';
+import {MatCardModule} from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     FullViewComponent,
-    AddComponent,
+    AddComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -34,6 +38,8 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
+    MatListModule,
+    MatCardModule,
     HttpClientModule,
     NgProgressModule.forRoot(),
     NgProgressHttpModule,

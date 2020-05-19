@@ -88,28 +88,34 @@ export class SearchComponent implements OnInit {
 
   autoSearchWords(userWord) {
     let tmp = 0;
-    if (userWord === '' || userWord === undefined ) {
-      this.submitted = false;
-    } else {
-      const x = this.db.list('words');
-      x.snapshotChanges().subscribe(item => {
-        // tslint:disable-next-line:no-shadowed-variable
-        item.forEach(element => {
-          const y = element.payload.toJSON();
-          y['$key'] = element.key;
-          this.words.push(y as Word);
-          if (y[this.languageType].startsWith(userWord)) {
-            console.log(y[this.languageType] + '-' + y['en']);
-            if (tmp === 0) {
-              this.submitted = true;
-              tmp++;
+    console.log(this.languageType + '   ' + this.tmpLanguageType);
+    if (userWord !== this.tmpUserWord || this.languageType !== this.tmpLanguageType) {
+      this.tmpUserWord = userWord;
+      this.tmpLanguageType = this.languageType;
+      if (userWord === '' || userWord === undefined) {
+        this.submitted = false;
+      } else {
+        const x = this.db.list('words');
+        x.snapshotChanges().subscribe(item => {
+          // tslint:disable-next-line:no-shadowed-variable
+          item.forEach(element => {
+            const y = element.payload.toJSON();
+            y['$key'] = element.key;
+            this.words.push(y as Word);
+            if (y[this.languageType].startsWith(userWord)) {
+              this.printWords.push(<Word>y);
+              if (tmp === 0) {
+                this.submitted = true;
+                tmp++;
+              }
             }
+          });
+          if (tmp === 0) {
+            this.submitted = false;
           }
         });
-        if (tmp === 0) {
-          this.submitted = false;
-        }
-      });
+      }
     }
+    this.printWords = [];
   }
 }

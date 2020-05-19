@@ -84,6 +84,7 @@ export class SearchComponent implements OnInit {
       }
     }
     this.printWords = [];
+    this.submitted = false;
   }
 
   autoSearchWords(userWord) {

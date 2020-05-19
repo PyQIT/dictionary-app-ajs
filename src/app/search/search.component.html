@@ -15,11 +15,11 @@
         </div>
       </div>
       <div [hidden]="!submitted">
-        <mat-card [@listAnimation]="" class="list-inline list-rounded">
+        <mat-card [@listAnimation]="printWords.length" class="list-inline list-rounded">
           <mat-list dense>
-            <mat-list-item> Pepper </mat-list-item>
-            <mat-list-item> Salt </mat-list-item>
-            <mat-list-item> Paprika </mat-list-item>
+            <mat-list-item *ngFor="let word of printWords" class="word">
+              {{word.pl}} - {{word.en}}
+            </mat-list-item>
           </mat-list>
         </mat-card>
       </div>

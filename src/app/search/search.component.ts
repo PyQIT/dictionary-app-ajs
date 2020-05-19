@@ -27,9 +27,12 @@ const listAnimation = trigger('listAnimation', [
 })
 export class SearchComponent implements OnInit {
 
+  printWords: Word[] = [];
   words: Word[] = [];
   languageType = 'en';
   submitted = false;
+  tmpLanguageType = 'start';
+  tmpUserWord = 'ToSlowoNigdyNieBedzieTakieSamoJakWpisanePrzezUzytkownika_#Potwierdzone:)_19.05.2020_BylemTu_20.05.2020_JaTez';
 
   constructor( private route: ActivatedRoute,
                private router: Router, private http: ApiService,
@@ -49,32 +52,38 @@ export class SearchComponent implements OnInit {
 
   searchWords(userWord) {
     let tmp = 0;
-    if (userWord === '' || userWord === undefined ) {
-      this.submitted = false;
-      this.toastr.error(`Pole wyszukiwania nie może być puste.`, `Błąd wyszukiwania!`);
-    } else {
-      const x = this.db.list('words');
-      x.snapshotChanges().subscribe(item => {
-        // tslint:disable-next-line:no-shadowed-variable
-        item.forEach(element => {
-          const y = element.payload.toJSON();
-          y['$key'] = element.key;
-          this.words.push(y as Word);
-          if (y[this.languageType].startsWith(userWord)) {
-            console.log(y[this.languageType] + '-' + y['en']);
-            if (tmp === 0) {
-              this.submitted = true;
-              this.toastr.success(`Znaleziono szukane słowo.`, `Sukces!`);
-              tmp++;
+    console.log(this.languageType + '   ' + this.tmpLanguageType);
+    if (userWord !== this.tmpUserWord || this.languageType !== this.tmpLanguageType) {
+      this.tmpUserWord = userWord;
+      this.tmpLanguageType = this.languageType;
+      if (userWord === '' || userWord === undefined) {
+        this.submitted = false;
+        this.toastr.error(`Pole wyszukiwania nie może być puste.`, `Błąd wyszukiwania!`);
+      } else {
+        const x = this.db.list('words');
+        x.snapshotChanges().subscribe(item => {
+          // tslint:disable-next-line:no-shadowed-variable
+          item.forEach(element => {
+            const y = element.payload.toJSON();
+            y['$key'] = element.key;
+            this.words.push(y as Word);
+            if (y[this.languageType].startsWith(userWord)) {
+              this.printWords.push(<Word>y);
+              if (tmp === 0) {
+                this.submitted = true;
+                this.toastr.success(`Znaleziono szukane słowo.`, `Sukces!`);
+                tmp++;
+              }
             }
+          });
+          if (tmp === 0) {
+            this.submitted = false;
+            this.toastr.error(`Brak podanego słowa w systemie.`, `Nie znaleziono słowa!`);
           }
         });
-        if (tmp === 0) {
-          this.submitted = false;
-          this.toastr.error(`Brak podanego słowa w systemie.`, `Nie znaleziono słowa!`);
-        }
-      });
+      }
     }
+    this.printWords = [];
   }
 
   autoSearchWords(userWord) {

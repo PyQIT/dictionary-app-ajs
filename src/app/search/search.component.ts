@@ -30,6 +30,7 @@ export class SearchComponent implements OnInit {
   printWords: Word[] = [];
   words: Word[] = [];
   languageType = 'en';
+  languageTypebool = false;
   submitted = false;
   tmpLanguageType = 'start';
   tmpUserWord = 'ToSlowoNigdyNieBedzieTakieSamoJakWpisanePrzezUzytkownika_#Potwierdzone:)_19.05.2020_BylemTu_20.05.2020_JaTez';
@@ -44,8 +45,10 @@ export class SearchComponent implements OnInit {
   changeLanguage() {
     if (this.languageType === 'pl') {
       this.languageType = 'en';
+      this.languageTypebool = false;
     } else {
       this.languageType = 'pl';
+      this.languageTypebool = true;
     }
     console.log(this.languageType);
   }

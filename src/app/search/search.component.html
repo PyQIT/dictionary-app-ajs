@@ -6,7 +6,7 @@
       <br>
       <div class="form-inline m-auto flex-center input-group">
         <ng-progress [thick]="true" [color]="'#ffd747'" [ease]="'easeInSine'"></ng-progress>
-        <input #searchBox [formControl]="searchBox" type="search" class="form-control" placeholder="Wpisz szukane słowo..." (input)="autoSearchWords(searchBox.value)">
+        <input #searchBox type="search" class="form-control" placeholder="Wpisz szukane słowo..." (input)="autoSearchWords(searchBox.value)">
         <div class="input-group-append">
           <button (click)="searchWords(searchBox.value)" class="btn btn-md btn-rounded btn-mdb-color waves-effect m-0 waves-light" type="button"
                   mdbWavesEffect>
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div [hidden]="!submitted">
-        <mat-card [@listAnimation]="printWords.length" class="list-inline list-rounded">
+        <mat-card [@listAnimation]="printWords.length" class="list-inline list-rounded mat-max-4lines">
           <mat-list dense *ngIf="languageTypebool">
             <mat-list-item *ngFor="let word of printWords" class="word">
               {{word.pl}} - {{word.en}}
